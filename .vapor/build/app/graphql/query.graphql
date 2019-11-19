@@ -1,0 +1,12 @@
+type Query {
+    countries: [Country!]! @all
+    me: User @auth(guard: "api")
+    searchUsers(keywords: String!): [User!]!
+        @paginate(builder: "App\\GraphQL\\Queries\\SearchUsers")
+        @middleware(checks: ["auth:api"])
+    categories: [Category!]! @all @middleware(checks: ["auth:api"])
+    quotes: [Quote!]! @all @middleware(checks: ["auth:api"])
+    languages: [Language!]! @all @middleware(checks: ["auth:api"])
+    posts: [Post!]! @paginate @middleware(checks: ["auth:api"])
+    drafts: [Post!]! @middleware(checks: ["auth:api"])
+}
