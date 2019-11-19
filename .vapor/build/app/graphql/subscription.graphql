@@ -1,3 +1,0 @@
-type Subscription {
-    postUpdated(author: ID): User
-}

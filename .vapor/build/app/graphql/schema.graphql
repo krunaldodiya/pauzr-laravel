@@ -1,8 +1,0 @@
-#import scalar.graphql
-#import query.graphql
-#import mutation.graphql
-#import subscription.graphql
-#import type.graphql
-#import payload.graphql
-#import input.graphql
-#import enum.graphql

@@ -22,6 +22,7 @@
         "laravel/vapor-core": "^2.2",
         "mll-lab/laravel-graphql-playground": "^2.0",
         "nuwave/lighthouse": "^4.6",
+        "predis/predis": "^1.1",
         "pusher/pusher-php-server": "~3.0",
         "tymon/jwt-auth": "^1.0.0"
     },
