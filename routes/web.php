@@ -11,7 +11,3 @@ Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
 Route::group(['prefix' => 'test', 'middleware' => 'auth'], function () {
     Route::get('/test', [TestController::class, 'web']);
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
