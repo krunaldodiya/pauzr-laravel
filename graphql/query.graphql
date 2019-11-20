@@ -9,4 +9,5 @@ type Query {
     languages: [Language!]! @all @middleware(checks: ["auth:api"])
     posts: [Post!]! @paginate @middleware(checks: ["auth:api"])
     drafts: [Post!]! @middleware(checks: ["auth:api"])
+    testSubscription: String! @middleware(checks: ["auth:api"])
 }
