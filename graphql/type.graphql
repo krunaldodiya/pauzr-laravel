@@ -53,6 +53,7 @@ type Post {
     category: Category! @belongsTo
     published: Boolean
     when: String!
+    is_favorited: Boolean!
     created_at: DateTime!
     updated_at: DateTime!
 }
