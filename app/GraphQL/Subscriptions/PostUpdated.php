@@ -2,9 +2,8 @@
 
 namespace App\GraphQL\Subscriptions;
 
-use App\User;
 use App\Post;
-use Illuminate\Support\Str;
+
 use Illuminate\Http\Request;
 use GraphQL\Type\Definition\ResolveInfo;
 use Nuwave\Lighthouse\Subscriptions\Subscriber;
@@ -20,7 +19,7 @@ class PostUpdated extends GraphQLSubscription
 
     public function filter(Subscriber $subscriber, $root): bool
     {
-        return true;
+        return false;
     }
 
     public function resolve($root, array $args, GraphQLContext $context, ResolveInfo $resolveInfo): Post
