@@ -13,7 +13,12 @@ class Post extends Model
 
     protected $guarded = [];
 
-    protected $appends = ['when'];
+    protected $appends = ['when', 'is_favorited'];
+
+    public function getIsFavoritedAttribute()
+    {
+        return !!auth()->user()->favorites->where('id', $this->id)->count();
+    }
 
     public function getWhenAttribute()
     {
