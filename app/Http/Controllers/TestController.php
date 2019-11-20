@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\TestEvent;
 use App\User;
 
 use Illuminate\Http\Request;
@@ -21,6 +22,11 @@ class TestController extends Controller
 
     public function web(Request $request)
     {
-        return auth()->user()->followings->pluck('id');
+        try {
+            event(new TestEvent('test'));
+            return env('BROADCAST_DRIVER');
+        } catch (\Throwable $th) {
+            dump($th);
+        }
     }
 }
