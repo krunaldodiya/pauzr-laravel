@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Post;
 use App\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TestController extends Controller
 {
@@ -22,6 +24,10 @@ class TestController extends Controller
 
     public function web(Request $request)
     {
-        return Post::get();
+        $category = Category::first();
+
+        $storage = Storage::disk('public')->url($category->background_image);
+
+        dd($category->toArray());
     }
 }
