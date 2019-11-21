@@ -37,6 +37,8 @@ class User extends Authenticatable implements JWTSubject
         'is_following', 'is_follower',
     ];
 
+    protected $dates = ['created_at', 'updated_at'];
+
     public function searchableAs()
     {
         return 'name';

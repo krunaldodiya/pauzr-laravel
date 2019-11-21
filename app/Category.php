@@ -9,6 +9,8 @@ class Category extends Model
 {
     use HasUuid;
 
+    public $timestamps = false;
+
     public $incrementing = false;
 
     protected $guarded = [];
