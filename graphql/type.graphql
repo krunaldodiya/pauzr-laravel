@@ -22,6 +22,26 @@ type Quote {
     type: String!
 }
 
+type Comment {
+    id: ID!
+    text: String!
+    user: User!
+    post: Post!
+    replies: [Reply!]!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type Reply {
+    id: ID!
+    text: String!
+    user: User!
+    post: Post!
+    comment: Comment!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
 type Attachment {
     id: ID!
     source: String
@@ -49,6 +69,7 @@ type Post {
     description: String
     type: String!
     attachments: [Attachment!]! @hasMany
+    comments: [Comment!]!
     owner: User! @belongsTo
     category: Category! @belongsTo
     published: Boolean

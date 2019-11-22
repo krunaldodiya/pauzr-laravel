@@ -45,4 +45,21 @@ type Mutation {
 
     toggleFavorite(post_id: ID! @rules(apply: ["required"])): String!
         @middleware(checks: ["auth:api"])
+
+    addComment(
+        post_id: ID! @rules(apply: ["required"])
+        text: String! @rules(apply: ["required"])
+    ): Comment!
+        @create
+        @inject(context: "user.id", name: "user_id")
+        @middleware(checks: ["auth:api"])
+
+    addReply(
+        post_id: ID! @rules(apply: ["required"])
+        comment_id: ID! @rules(apply: ["required"])
+        text: String! @rules(apply: ["required"])
+    ): Reply!
+        @create
+        @inject(context: "user.id", name: "user_id")
+        @middleware(checks: ["auth:api"])
 }
