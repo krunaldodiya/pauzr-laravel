@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\Post;
 use App\User;
 
 use Illuminate\Http\Request;
@@ -24,10 +22,6 @@ class TestController extends Controller
 
     public function web(Request $request)
     {
-        $category = Category::first();
-
-        $storage = Storage::disk('public')->url($category->background_image);
-
-        dd($category->toArray());
+        dd(env('APP_ENV'));
     }
 }

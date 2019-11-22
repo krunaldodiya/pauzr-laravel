@@ -11,5 +11,7 @@ type Query {
         @paginate(builder: "App\\GraphQL\\Queries\\Posts")
         @middleware(checks: ["auth:api"])
     drafts: [Post!]! @middleware(checks: ["auth:api"])
-    testSubscription: String! @middleware(checks: ["auth:api"])
+    helloThere: String!
+        @middleware(checks: ["auth:api"])
+        @broadcast(subscription: "testSubscription")
 }
