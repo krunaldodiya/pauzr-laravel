@@ -16,11 +16,6 @@ Route::group(['prefix' => 'location'], function () {
     Route::get("countries", [LocationController::class, 'getCountries']);
 });
 
-Route::group(['prefix' => 'sync'], function () {
-    Route::get("db", [SyncController::class, 'getSync']);
-    Route::post("db", [SyncController::class, 'postSync']);
-});
-
 Route::group(['prefix' => 'otp', 'middleware' => 'guest:api'], function () {
     Route::post("request", [OtpController::class, 'requestOtp']);
     Route::post("verify", [OtpController::class, 'verifyOtp']);
