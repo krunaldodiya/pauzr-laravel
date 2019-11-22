@@ -3,8 +3,10 @@
 namespace App\GraphQL\Subscriptions;
 
 use Illuminate\Http\Request;
-use Nuwave\Lighthouse\Schema\Types\GraphQLSubscription;
+use GraphQL\Type\Definition\ResolveInfo;
 use Nuwave\Lighthouse\Subscriptions\Subscriber;
+use Nuwave\Lighthouse\Schema\Types\GraphQLSubscription;
+use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
 
 class TestSubscription extends GraphQLSubscription
 {
@@ -15,6 +17,11 @@ class TestSubscription extends GraphQLSubscription
 
     public function filter(Subscriber $subscriber, $root): bool
     {
-        return true;
+        return false;
+    }
+
+    public function resolve($root, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
+    {
+        return $root;
     }
 }
