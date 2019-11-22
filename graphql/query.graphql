@@ -7,7 +7,9 @@ type Query {
     categories: [Category!]! @all @middleware(checks: ["auth:api"])
     quotes: [Quote!]! @all @middleware(checks: ["auth:api"])
     languages: [Language!]! @all @middleware(checks: ["auth:api"])
-    posts: [Post!]! @paginate @middleware(checks: ["auth:api"])
+    posts: [Post!]!
+        @paginate(builder: "App\\GraphQL\\Queries\\Posts")
+        @middleware(checks: ["auth:api"])
     drafts: [Post!]! @middleware(checks: ["auth:api"])
     testSubscription: String! @middleware(checks: ["auth:api"])
 }

@@ -20,7 +20,6 @@ class Posts
                     ->where('user_id', $authUser->id)
                     ->orWhereIn('user_id', $followingIds);
             })
-            ->orderBy('created_at', 'desc')
-            ->paginate();
+            ->orderBy('created_at', 'desc');
     }
 }
