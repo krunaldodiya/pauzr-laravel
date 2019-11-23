@@ -12,7 +12,7 @@ class MessageAdded extends GraphQLSubscription
 {
     public function authorize(Subscriber $subscriber, Request $request)
     {
-        dump($subscriber->context);
+        dump($subscriber->context->user);
         dump($subscriber->args);
 
         return true;
