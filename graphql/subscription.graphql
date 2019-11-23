@@ -1,3 +1,3 @@
 type Subscription {
-    messageAdded: Chat!
+    messageAdded: Chat! @middleware(checks: ["auth:api"])
 }
