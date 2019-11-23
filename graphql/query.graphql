@@ -11,10 +11,8 @@ type Query {
     languages: [Language!]! @all @middleware(checks: ["auth:api"])
     drafts: [Post!]! @middleware(checks: ["auth:api"])
     all_chatrooms: [Chatroom!]! @middleware(checks: ["auth:api"])
-    private_chatroom(
-        friend_id: ID! @rules(apply: ["required"])
-        per_page: Int! @rules(apply: ["required"])
-    ): Chatroom! @middleware(checks: ["auth:api"])
+    private_chatroom(friend_id: ID! @rules(apply: ["required"])): Chatroom!
+        @middleware(checks: ["auth:api"])
     group_chatroom(chatroom_id: ID! @rules(apply: ["required"])): Chatroom!
         @middleware(checks: ["auth:api"])
     posts: [Post!]!
