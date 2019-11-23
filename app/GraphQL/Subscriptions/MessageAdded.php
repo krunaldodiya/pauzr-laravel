@@ -2,6 +2,7 @@
 
 namespace App\GraphQL\Subscriptions;
 
+use App\User;
 use GraphQL\Type\Definition\ResolveInfo;
 use Illuminate\Http\Request;
 use Nuwave\Lighthouse\Schema\Types\GraphQLSubscription;
@@ -12,10 +13,9 @@ class MessageAdded extends GraphQLSubscription
 {
     public function authorize(Subscriber $subscriber, Request $request)
     {
-        dump($subscriber->context->user);
-        dump($subscriber->args);
+        dump(User::find($subscriber->context->user->id));
 
-        return true;
+        return User::find($subscriber->context->user->id)->chatrooms()->where('id', $subscriber->args['chatroom_id']);
     }
 
     public function filter(Subscriber $subscriber, $root)
