@@ -13,7 +13,11 @@ class MessageAdded extends GraphQLSubscription
 {
     public function authorize(Subscriber $subscriber, Request $request)
     {
-        return !!User::find($subscriber->context->user->id)
+        $user = $subscriber->context->user;
+
+        dump($user->id);
+
+        return !!User::find($user->id)
             ->chatrooms()
             ->where('id', $subscriber->args['chatroom_id'])
             ->count();
