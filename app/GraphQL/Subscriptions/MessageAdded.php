@@ -12,12 +12,16 @@ class MessageAdded extends GraphQLSubscription
 {
     public function authorize(Subscriber $subscriber, Request $request)
     {
+        dump($subscriber);
+
         return true;
     }
 
     public function filter(Subscriber $subscriber, $root)
     {
-        return true;
+        $user = $subscriber->context->user;
+
+        return $root->sender->id !== $user->id;
     }
 
     public function resolve($root, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
