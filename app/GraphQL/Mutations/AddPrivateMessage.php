@@ -16,7 +16,8 @@ class AddPrivateMessage
 
         $chat_created = Chat::create([
             'text' => $args['text'],
-            'sender_id' => $authUser->id
+            'chatroom_id' => $args['chatroom_id'],
+            'sender_id' => $authUser->id,
         ]);
 
         $chat = Chat::with('sender', 'chatroom')->where('id', $chat_created->id)->first();
