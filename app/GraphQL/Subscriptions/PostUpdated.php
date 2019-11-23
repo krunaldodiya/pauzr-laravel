@@ -14,9 +14,12 @@ class PostUpdated extends GraphQLSubscription
 {
     public function authorize(Subscriber $subscriber, Request $request)
     {
-        // return !!User::find($subscriber->context->user->id)
+        // $user = $subscriber->context->user;
+        // $args = $subscriber->args;
+
+        // return !!User::find($user->id)
         //     ->chatrooms()
-        //     ->where('id', $subscriber->args['chatroom_id'])
+        //     ->where('id', $args['chatroom_id'])
         //     ->count();
 
         return true;
@@ -25,6 +28,7 @@ class PostUpdated extends GraphQLSubscription
     public function filter(Subscriber $subscriber, $root)
     {
         // $user = $subscriber->context->user;
+        // $args = $subscriber->args;
 
         // return $root->sender->id !== $user->id;
 
