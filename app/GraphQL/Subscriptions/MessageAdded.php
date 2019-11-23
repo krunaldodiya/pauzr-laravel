@@ -25,6 +25,8 @@ class MessageAdded extends GraphQLSubscription
     {
         $user = $subscriber->context->user;
 
+        dump($user);
+
         return $root->sender_id !== $user->id;
     }
 
