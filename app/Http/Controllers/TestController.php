@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Chatroom;
 use App\User;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class TestController extends Controller
 {
@@ -22,8 +22,20 @@ class TestController extends Controller
 
     public function web(Request $request)
     {
-        $user = User::where('id', $request->id)->first();
+        $authUser = auth()->user();
+        $friend_id = "fb75dab8-e2ee-46e3-93e2-c81b3f8569a1";
 
-        return $user->chatrooms;
+        $chatrooms = $authUser
+            ->chatrooms()
+            ->where(function ($query) use ($friend_id) {
+                return $query
+                    ->where('chatroom_type', "Private")
+                    ->whereHas('subscribers', function ($query) use ($friend_id) {
+                        return $query->where("id", $friend_id);
+                    });
+            })
+            ->first();
+
+        return $chatrooms;
     }
 }
