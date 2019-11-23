@@ -20,6 +20,6 @@ class Chat extends Model
 
     public function sender()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class, 'sender_id');
     }
 }

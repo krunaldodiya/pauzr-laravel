@@ -11,7 +11,7 @@ type Chat {
     id: ID!
     text: String!
     chatroom: Chat! @belongsTo
-    sender: User! @hasOne
+    sender: User! @belongsTo
 }
 
 type Country {

@@ -22,6 +22,6 @@ class TestController extends Controller
 
     public function web(Request $request)
     {
-        return Chatroom::with('chats')->first();
+        return Chatroom::with('chats.sender')->first();
     }
 }
