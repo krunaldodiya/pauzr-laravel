@@ -19,7 +19,9 @@ class Chatroom extends Model
 
     public function getChatroomImageAttribute($chatroom_image)
     {
-        return $chatroom_image == null ? "https://huntpng.com/images250/default-avatar-png-11.png" : $chatroom_image;
+        return $chatroom_image == null
+            ? "https://images.vexels.com/media/users/3/139911/isolated/preview/1afb4038427b2bd8edd275940aea269d-chat-service-icon-by-vexels.png"
+            : $chatroom_image;
     }
 
     public function subscribers()
