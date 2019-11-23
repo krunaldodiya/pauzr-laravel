@@ -1,6 +1,4 @@
 type Subscription {
-    messageAdded: Chat! @middleware(checks: ["auth:api"])
-
-    # messageAdded(chatroom_id: ID! @rules(apply: ["required"])): Chat!
-    #     @middleware(checks: ["auth:api"])
+    messageAdded(chatroom_id: ID! @rules(apply: ["required"])): Chat!
+        @middleware(checks: ["auth:api"])
 }
