@@ -5,7 +5,7 @@ namespace App;
 use App\Traits\HasUuid;
 use Illuminate\Database\Eloquent\Model;
 
-class GroupChatroom extends Model
+class Chatroom extends Model
 {
     use HasUuid;
 

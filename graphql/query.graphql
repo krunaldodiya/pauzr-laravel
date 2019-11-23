@@ -8,7 +8,9 @@ type Query {
     quotes: [Quote!]! @all @middleware(checks: ["auth:api"])
     languages: [Language!]! @all @middleware(checks: ["auth:api"])
     drafts: [Post!]! @middleware(checks: ["auth:api"])
-    chatrooms: [Chatroom!]! @belongsToMany @middleware(checks: ["auth:api"])
+    all_chatrooms: [Chatroom!]! @middleware(checks: ["auth:api"])
+    chatroom_by_id(chatroom_id: ID! @rules(apply: ["required"])): Chatroom!
+        @middleware(checks: ["auth:api"])
     posts: [Post!]!
         @paginate(builder: "App\\GraphQL\\Queries\\Posts")
         @middleware(checks: ["auth:api"])

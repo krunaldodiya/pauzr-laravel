@@ -7,6 +7,7 @@ use App\Traits\HasUuid;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Scout\Searchable;
 
 class User extends Authenticatable implements JWTSubject
@@ -34,7 +35,7 @@ class User extends Authenticatable implements JWTSubject
     ];
 
     protected $appends = [
-        'is_following', 'is_follower',
+        'is_following', 'is_follower'
     ];
 
     protected $dates = ['created_at', 'updated_at'];
@@ -46,12 +47,12 @@ class User extends Authenticatable implements JWTSubject
 
     public function getIsFollowingAttribute()
     {
-        return !!Follow::where(['follower_id' => auth()->id(), 'following_id' => $this->id])->count();
+        return !!DB::table('follows')->where(['follower_id' => auth()->id(), 'following_id' => $this->id])->count();
     }
 
     public function getIsFollowerAttribute()
     {
-        return !!Follow::where(['following_id' => auth()->id(), 'follower_id' => $this->id])->count();
+        return !!DB::table('follows')->where(['following_id' => auth()->id(), 'follower_id' => $this->id])->count();
     }
 
     public function getAvatarAttribute($avatar)
