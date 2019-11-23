@@ -14,7 +14,12 @@ class CreateChatSubscribersTable extends Migration
     public function up()
     {
         Schema::create('chat_subscribers', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->uuid('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+
+            $table->uuid('chatroom_id');
+            $table->foreign('chatroom_id')->references('id')->on('chatrooms')->onUpdate('cascade')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

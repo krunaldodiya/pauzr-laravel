@@ -19,8 +19,8 @@ class CreateChatsTable extends Migration
             $table->uuid('sender_id');
             $table->foreign('sender_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
 
-            $table->uuid('conversation_id');
-            $table->foreign('conversation_id')->references('id')->on('conversations')->onUpdate('cascade')->onDelete('cascade');
+            $table->uuid('chatroom_id');
+            $table->foreign('chatroom_id')->references('id')->on('chatrooms')->onUpdate('cascade')->onDelete('cascade');
 
             $table->string('text');
 
