@@ -13,6 +13,8 @@ class AllChatrooms
     {
         $chatroomIds = auth()->user()->chatrooms->pluck('id');
 
-        return Chatroom::with('subscribers', 'chats')->whereIn('id', $chatroomIds)->get();
+        return Chatroom::with('subscribers', 'chats')
+            ->whereIn('id', $chatroomIds)
+            ->get();
     }
 }
