@@ -1,6 +1,7 @@
 type Chatroom {
     id: ID!
-    type: String!
+    chatroom_type: String!
+    chatroom_name: String!
     chats: [Chat!]! @hasMany
     subscribers: User! @belongsToMany
 }
