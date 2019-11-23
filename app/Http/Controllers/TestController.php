@@ -22,8 +22,7 @@ class TestController extends Controller
 
     public function web(Request $request)
     {
-        $chatroomIds = auth()->user()->chatrooms->pluck('id');
-
-        return Chatroom::with('subscribers', 'chats')->whereIn('id', $chatroomIds)->get();
+        return User::with('followers', 'followings', 'country')
+            ->where('id', '43e2634d-d284-44fb-b01e-04a805b9fb47')->first();
     }
 }
