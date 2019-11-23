@@ -24,10 +24,8 @@ class MessageAdded extends GraphQLSubscription
 
     public function resolve($root, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
     {
-        $chat = Chat::with('sender')->where('id', $root->id)->first();
+        // return Chat::with('sender')->where('id', $root->id)->first();
 
-        dump($chat);
-
-        return $chat;
+        return $root;
     }
 }

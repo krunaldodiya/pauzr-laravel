@@ -37,6 +37,8 @@ class PostUpdated extends GraphQLSubscription
 
     public function resolve($root, array $args, GraphQLContext $context, ResolveInfo $resolveInfo): Post
     {
+        // $chat = Chat::with('sender')->where('id', $root->id)->first();
+
         return $root;
     }
 }
