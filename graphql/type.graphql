@@ -1,3 +1,17 @@
+type Chatroom {
+    id: ID!
+    type: String!
+    chats: [Chat!]! @hasMany
+    subscribers: User! @belongsToMany
+}
+
+type Chat {
+    id: ID!
+    text: String!
+    chat: Chat! @belongsTo
+    sender: User! @hasOne
+}
+
 type Country {
     id: ID!
     name: String!

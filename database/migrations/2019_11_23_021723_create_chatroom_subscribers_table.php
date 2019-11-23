@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChatSubscribersTable extends Migration
+class CreateChatroomSubscribersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateChatSubscribersTable extends Migration
      */
     public function up()
     {
-        Schema::create('chat_subscribers', function (Blueprint $table) {
+        Schema::create('chatroom_subscribers', function (Blueprint $table) {
             $table->uuid('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
 
             $table->uuid('chatroom_id');
             $table->foreign('chatroom_id')->references('id')->on('chatrooms')->onUpdate('cascade')->onDelete('cascade');
 
+            $table->boolean('is_admin')->default(false);
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ class CreateChatSubscribersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chat_subscribers');
+        Schema::dropIfExists('chatroom_subscribers');
     }
 }

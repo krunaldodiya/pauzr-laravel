@@ -15,7 +15,7 @@ class GroupChatroom extends Model
 
     public function subscribers()
     {
-        return $this->belongsToMany(User::class, 'chat_subscribers');
+        return $this->belongsToMany(User::class, 'chatroom_subscribers');
     }
 
     public function chats()
