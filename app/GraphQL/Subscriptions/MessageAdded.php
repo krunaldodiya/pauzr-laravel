@@ -15,8 +15,6 @@ class MessageAdded extends GraphQLSubscription
     {
         $user = $subscriber->context->user;
 
-        dump($user->id);
-
         return !!User::find($user->id)
             ->chatrooms()
             ->where('id', $subscriber->args['chatroom_id'])
@@ -25,6 +23,8 @@ class MessageAdded extends GraphQLSubscription
 
     public function filter(Subscriber $subscriber, $root)
     {
+        dump($root);
+
         $user = $subscriber->context->user;
 
         return $root->sender->id !== $user->id;
