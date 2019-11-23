@@ -22,6 +22,8 @@ class TestController extends Controller
 
     public function web(Request $request)
     {
-        dd(env('APP_ENV'));
+        $user = User::where('id', $request->id)->first();
+
+        return $user->chatrooms;
     }
 }
