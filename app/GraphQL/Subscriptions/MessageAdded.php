@@ -23,11 +23,9 @@ class MessageAdded extends GraphQLSubscription
 
     public function filter(Subscriber $subscriber, $root)
     {
-        dump($root);
-
         $user = $subscriber->context->user;
 
-        return $root->sender->id !== $user->id;
+        return $root->sender_id !== $user->id;
     }
 
     public function resolve($root, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
