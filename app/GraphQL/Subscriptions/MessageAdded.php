@@ -2,6 +2,7 @@
 
 namespace App\GraphQL\Subscriptions;
 
+use App\Chat;
 use App\User;
 use GraphQL\Type\Definition\ResolveInfo;
 use Illuminate\Http\Request;
@@ -23,6 +24,6 @@ class MessageAdded extends GraphQLSubscription
 
     public function resolve($root, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
     {
-        return $root;
+        return Chat::with('sender')->where('id', $root->id)->first();
     }
 }
