@@ -1,7 +1,8 @@
 type Query {
     countries: [Country!]! @all
-    me: User @auth(guard: "api")
+    me: User @auth @middleware(checks: ["auth:api"])
     getUserById(user_id: ID! @rules(apply: ["required"])): User
+        @middleware(checks: ["auth:api"])
     searchUsers(keywords: String!): [User!]!
         @paginate(builder: "App\\GraphQL\\Queries\\SearchUsers")
         @middleware(checks: ["auth:api"])
