@@ -13,12 +13,17 @@ class MessageAdded extends GraphQLSubscription
 {
     public function authorize(Subscriber $subscriber, Request $request)
     {
-        return true;
+        return !!User::find($subscriber->context->user->id)
+            ->chatrooms()
+            ->where('id', $subscriber->args['chatroom_id'])
+            ->count();
     }
 
     public function filter(Subscriber $subscriber, $root)
     {
-        return true;
+        $user = $subscriber->context->user;
+
+        return $root->sender->id !== $user->id;
     }
 
     public function resolve($root, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
