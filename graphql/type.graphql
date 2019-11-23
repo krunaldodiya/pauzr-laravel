@@ -10,7 +10,7 @@ type Chatroom {
 type Chat {
     id: ID!
     text: String!
-    chat: Chat! @belongsTo
+    chatroom: Chat! @belongsTo
     sender: User! @hasOne
 }
 
