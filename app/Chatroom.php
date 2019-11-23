@@ -13,6 +13,15 @@ class Chatroom extends Model
 
     protected $guarded = [];
 
+    protected $appends = [
+        'chatroom_image'
+    ];
+
+    public function getChatroomImageAttribute($chatroom_image)
+    {
+        return $chatroom_image == null ? "https://huntpng.com/images250/default-avatar-png-11.png" : $chatroom_image;
+    }
+
     public function subscribers()
     {
         return $this->belongsToMany(User::class, 'chatroom_subscribers');
