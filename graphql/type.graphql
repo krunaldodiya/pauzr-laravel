@@ -3,7 +3,7 @@ type Chatroom {
     chatroom_type: String!
     chatroom_name: String!
     chatroom_image: String!
-    chats: [Chat!]! @hasMany(type: "paginator")
+    chats: [Chat!]! @hasMany
     subscribers: [User!]! @belongsToMany
 }
 
