@@ -24,4 +24,9 @@ class TestController extends Controller
     {
         return Chatroom::with('chats.sender')->first();
     }
+
+    public function env(Request $request)
+    {
+        dd(env('APP_ENV'));
+    }
 }
