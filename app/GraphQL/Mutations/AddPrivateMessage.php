@@ -20,7 +20,7 @@ class AddPrivateMessage
             'sender_id' => $authUser->id,
         ]);
 
-        Subscription::broadcast('hello', 'hello');
+        Subscription::broadcast('hello', $args['text']);
 
         return Chat::with('sender', 'chatroom')->where('id', $chat_created->id)->first();
     }
