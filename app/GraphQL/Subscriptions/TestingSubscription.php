@@ -3,18 +3,25 @@
 namespace App\GraphQL\Subscriptions;
 
 use Illuminate\Http\Request;
-use Nuwave\Lighthouse\Schema\Types\GraphQLSubscription;
+use GraphQL\Type\Definition\ResolveInfo;
 use Nuwave\Lighthouse\Subscriptions\Subscriber;
+use Nuwave\Lighthouse\Schema\Types\GraphQLSubscription;
+use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
 
 class TestingSubscription extends GraphQLSubscription
 {
-    public function authorize(Subscriber $subscriber, Request $request): bool
+    public function authorize(Subscriber $subscriber, Request $request)
     {
         return true;
     }
 
-    public function filter(Subscriber $subscriber, $root): bool
+    public function filter(Subscriber $subscriber, $root)
     {
         return true;
+    }
+
+    public function resolve($root, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
+    {
+        return $root;
     }
 }
