@@ -1,4 +1,6 @@
 type Subscription {
     messageAdded(chatroom_id: ID! @rules(apply: ["required"])): Chat!
         @middleware(checks: ["auth:api"])
+
+    helloThere: String! @middleware(checks: ["auth:api"])
 }
