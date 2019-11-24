@@ -66,7 +66,5 @@ type Mutation {
     addPrivateMessage(
         text: String! @rules(apply: ["required"])
         chatroom_id: ID! @rules(apply: ["required"])
-    ): Chat!
-        @middleware(checks: ["auth:api"])
-        @broadcast(subscription: "messageAdded")
+    ): Chat! @middleware(checks: ["auth:api"])
 }
