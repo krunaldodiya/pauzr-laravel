@@ -22,6 +22,8 @@ class MessageAdded extends GraphQLSubscription
 
     public function resolve($root, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
     {
+        dump($root);
+
         return $root;
     }
 }
