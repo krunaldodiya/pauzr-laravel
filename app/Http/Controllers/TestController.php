@@ -33,8 +33,8 @@ class TestController extends Controller
 
     public function broadcast(Request $request)
     {
-        broadcast(new TestEvent($request->get('message')));
+        broadcast(new TestEvent('hello'));
 
-        return $request->get('message');
+        return 'hello';
     }
 }
