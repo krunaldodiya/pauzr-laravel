@@ -19,5 +19,7 @@ type Query {
         @paginate(builder: "App\\GraphQL\\Queries\\Posts")
         @middleware(checks: ["auth:api"])
 
-    helloThere: String!
+    helloThere(text: String! @rules(apply: ["required"])): String!
+        @middleware(checks: ["auth:api"])
+        @broadcast(subscription: "testingSubscription")
 }
