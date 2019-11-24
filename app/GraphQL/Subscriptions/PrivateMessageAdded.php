@@ -24,6 +24,6 @@ class PrivateMessageAdded extends GraphQLSubscription
 
     public function resolve($root, array $args, GraphQLContext $context, ResolveInfo $resolveInfo): Chat
     {
-        return $root->toArray();
+        return $root;
     }
 }
