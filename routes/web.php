@@ -11,4 +11,5 @@ Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
 Route::group(['prefix' => 'test', 'middleware' => 'auth'], function () {
     Route::get('test', [TestController::class, 'web']);
     Route::get('env', [TestController::class, 'env']);
+    Route::get('broadcast', [TestController::class, 'broadcast']);
 });

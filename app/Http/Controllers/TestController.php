@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Chatroom;
+use App\Events\TestEvent;
 use App\User;
 
 use Illuminate\Http\Request;
@@ -28,5 +29,12 @@ class TestController extends Controller
     public function env(Request $request)
     {
         dd(env('APP_ENV'));
+    }
+
+    public function broadcast(Request $request)
+    {
+        broadcast(new TestEvent('hello'));
+
+        return 'done';
     }
 }
