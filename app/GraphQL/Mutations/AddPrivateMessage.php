@@ -22,7 +22,8 @@ class AddPrivateMessage
 
         $chat = Chat::with('sender', 'chatroom')->where('id', $chat_created->id)->first();
 
-        Subscription::broadcast('messageAdded', $chat);
+        Subscription::broadcast('helloThere', 'testing');
+        // Subscription::broadcast('messageAdded', $chat);
 
         return $chat;
     }
