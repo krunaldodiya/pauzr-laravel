@@ -35,6 +35,6 @@ class TestController extends Controller
     {
         broadcast(new TestEvent($request->get('message')));
 
-        return 'done';
+        return $request->get('message');
     }
 }
