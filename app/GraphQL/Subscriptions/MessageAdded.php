@@ -12,6 +12,8 @@ class MessageAdded extends GraphQLSubscription
 {
     public function authorize(Subscriber $subscriber, Request $request)
     {
+        dump($subscriber);
+
         return true;
     }
 
@@ -22,8 +24,6 @@ class MessageAdded extends GraphQLSubscription
 
     public function resolve($root, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
     {
-        dump($root);
-
         return $root;
     }
 }
