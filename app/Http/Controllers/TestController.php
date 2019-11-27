@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Events\TestEvent;
+use App\Notifications\UserFollowed;
 use App\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class TestController extends Controller
 {
@@ -22,7 +24,10 @@ class TestController extends Controller
 
     public function web(Request $request)
     {
-        return 'hello';
+        $user = auth()->user();
+        $following = User::find("fb75dab8-e2ee-46e3-93e2-c81b3f8569a1");
+
+        Notification::send($following, new UserFollowed($following->toArray(), $user->toArray()));
     }
 
     public function env(Request $request)
