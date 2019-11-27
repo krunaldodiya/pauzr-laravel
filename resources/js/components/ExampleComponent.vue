@@ -15,8 +15,8 @@
 <script>
 export default {
   mounted() {
-    Echo.channel("chat").listen("TestEvent", data => {
-      console.log(data);
+    Echo.channel("chat").listen("App\\Events\\TestEvent", data => {
+      console.log("data", data);
     });
   }
 };
