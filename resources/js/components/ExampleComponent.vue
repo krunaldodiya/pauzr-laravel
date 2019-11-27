@@ -15,16 +15,9 @@
 <script>
 export default {
   mounted() {
-    Echo.join("chat")
-      .here(users => {
-        console.log(users);
-      })
-      .joining(user => {
-        console.log(user);
-      })
-      .leaving(user => {
-        console.log(user);
-      });
+    Echo.channel("chat").listen("TestEvent", data => {
+      console.log(data);
+    });
   }
 };
 </script>
