@@ -22,8 +22,8 @@ class CreateAttachmentsTable extends Migration
             $table->uuid('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
 
-            $table->uuid('post_id');
-            $table->foreign('post_id')->references('id')->on('posts')->onUpdate('cascade')->onDelete('cascade');
+            $table->uuid('attachable_id');
+            $table->string('attachable_type');
 
             $table->string('source')->nullable();
             $table->string('path');

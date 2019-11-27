@@ -12,4 +12,9 @@ class Attachment extends Model
     public $incrementing = false;
 
     protected $guarded = [];
+
+    public function attachable()
+    {
+        return $this->morphTo();
+    }
 }
