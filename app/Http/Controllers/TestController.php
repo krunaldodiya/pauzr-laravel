@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Chatroom;
 use App\Events\TestEvent;
 use App\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class TestController extends Controller
 {
@@ -23,7 +23,7 @@ class TestController extends Controller
 
     public function web(Request $request)
     {
-        return Chatroom::with('chats.sender')->first();
+        return 'hello';
     }
 
     public function env(Request $request)
