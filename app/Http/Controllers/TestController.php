@@ -24,10 +24,9 @@ class TestController extends Controller
 
     public function web(Request $request)
     {
-        $user = auth()->user();
-        $following = User::find("fb75dab8-e2ee-46e3-93e2-c81b3f8569a1");
+        TestEvent::broadcast("hello");
 
-        Notification::send($following, new UserFollowed($following->toArray(), $user->toArray()));
+        return 'done';
     }
 
     public function env(Request $request)
