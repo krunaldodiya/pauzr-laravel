@@ -18,4 +18,6 @@ type Query {
     posts: [Post!]!
         @paginate(builder: "App\\GraphQL\\Queries\\Posts")
         @middleware(checks: ["auth:api"])
+
+    notifications: [Notification!]! @middleware(checks: ["auth:api"])
 }
