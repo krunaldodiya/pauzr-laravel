@@ -6,3 +6,4 @@
 #import payload.graphql
 #import input.graphql
 #import enum.graphql
+#import union.graphql
