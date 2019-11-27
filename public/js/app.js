@@ -1854,12 +1854,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    Echo.join("chat").here(function (users) {
-      console.log(users);
-    }).joining(function (user) {
-      console.log(user);
-    }).leaving(function (user) {
-      console.log(user);
+    Echo.channel("chat").listen("TestEvent", function (data) {
+      console.log("data", data);
     });
   }
 });
@@ -59280,7 +59276,7 @@ window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: "pusher",
-  cluster: "mt1",
+  cluster: "ap2",
   key: "myAppKey",
   wsHost: window.location.hostname,
   wsPort: 6001,
