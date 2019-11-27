@@ -3,6 +3,7 @@
 namespace App\GraphQL\Mutations;
 
 use App\Notifications\UserFollowed;
+use App\User;
 use GraphQL\Type\Definition\ResolveInfo;
 use Illuminate\Notifications\Notification;
 use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;

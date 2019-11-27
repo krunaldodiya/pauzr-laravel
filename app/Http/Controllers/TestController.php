@@ -6,7 +6,6 @@ use App\Events\TestEvent;
 use App\User;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Notification;
 
 class TestController extends Controller
 {
