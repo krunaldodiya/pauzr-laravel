@@ -37,9 +37,9 @@ return [
             'app_id' => env('PUSHER_APP_ID'),
             'options' => [
                 'cluster' => env('PUSHER_APP_CLUSTER'),
-                'host' => env('PUSHER_APP_HOST'),
-                'port' => env('PUSHER_APP_PORT'),
-                'scheme' => env('PUSHER_APP_SCHEME'),
+                // 'host' => env('PUSHER_APP_HOST'), // not working
+                // 'port' => env('PUSHER_APP_PORT'), // not working
+                // 'scheme' => env('PUSHER_APP_SCHEME'), // not working
                 'encrypted' => true,
                 'curl_options' => [
                     CURLOPT_SSL_VERIFYHOST => 0,
