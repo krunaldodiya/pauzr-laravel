@@ -1,3 +1,10 @@
+type Config {
+    id: ID!
+    device_id: String!
+    initial_screen: String!
+    country: Country @belongsTo
+}
+
 type Notification {
     id: ID!
     type: String!
