@@ -2,6 +2,7 @@ type Config {
     id: ID!
     device_id: String!
     initial_screen: String!
+    country_id: ID!
     country: Country @belongsTo
 }
 

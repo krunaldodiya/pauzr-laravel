@@ -73,7 +73,7 @@ type Mutation {
 
     setConfig(
         id: ID! @rules(apply: ["required", "exists:configs"])
-        country_id: String
+        country_id: ID
         initial_screen: String
     ): Config!
 }
