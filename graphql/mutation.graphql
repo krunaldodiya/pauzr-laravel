@@ -70,4 +70,10 @@ type Mutation {
     ): Chat!
         @middleware(checks: ["auth:api"])
         @broadcast(subscription: "privateMessageAdded")
+
+    setConfig(
+        id: ID! @rules(apply: ["required", "exists:configs"])
+        country_id: String
+        initial_screen: String
+    ): Config!
 }
