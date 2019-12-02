@@ -13,6 +13,13 @@ class Config extends Model
 
     protected $guarded = [];
 
+    public function getInitialScreenAttribute($initial_screen)
+    {
+        $auth = auth()->user();
+
+        return $auth ? $initial_screen : "Auth";
+    }
+
     public function country()
     {
         return $this->belongsTo(Country::class);
