@@ -20,5 +20,5 @@ type Query {
         @middleware(checks: ["auth:api"])
     notifications: [Notification!]! @middleware(checks: ["auth:api"])
     getConfig(device_id: String! @rules(apply: ["required"])): Config!
-        @middleware(checks: ["auth:api"])
+        @middleware(checks: ["jwt.check"])
 }

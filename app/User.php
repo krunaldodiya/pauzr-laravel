@@ -47,12 +47,16 @@ class User extends Authenticatable implements JWTSubject
 
     public function getIsFollowingAttribute()
     {
-        return !!DB::table('follows')->where(['follower_id' => auth()->id(), 'following_id' => $this->id])->count();
+        return !!DB::table('follows')
+            ->where(['follower_id' => auth()->id(), 'following_id' => $this->id])
+            ->count();
     }
 
     public function getIsFollowerAttribute()
     {
-        return !!DB::table('follows')->where(['following_id' => auth()->id(), 'follower_id' => $this->id])->count();
+        return !!DB::table('follows')
+            ->where(['following_id' => auth()->id(), 'follower_id' => $this->id])
+            ->count();
     }
 
     public function getAvatarAttribute($avatar)

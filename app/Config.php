@@ -15,7 +15,7 @@ class Config extends Model
 
     public function getInitialScreenAttribute($initial_screen)
     {
-        $auth = auth()->user();
+        $auth = auth()->check();
 
         return $auth ? $initial_screen : "Auth";
     }
