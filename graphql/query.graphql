@@ -21,4 +21,7 @@ type Query {
     notifications: [Notification!]! @middleware(checks: ["auth:api"])
     getConfig(device_id: String! @rules(apply: ["required"])): Config!
         @middleware(checks: ["jwt.check"])
+    getPostsByCategory(category_id: ID! @rules(apply: ["required"])): [Post]!
+        @paginate(builder: "App\\GraphQL\\Queries\\PostsByCategory")
+        @middleware(checks: ["jwt.check"])
 }
