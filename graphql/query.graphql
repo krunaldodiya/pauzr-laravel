@@ -24,4 +24,7 @@ type Query {
     getPostsByCategory(category_id: ID! @rules(apply: ["required"])): [Post]!
         @paginate(builder: "App\\GraphQL\\Queries\\PostsByCategory")
         @middleware(checks: ["jwt.check"])
+    getComments(post_id: ID! @rules(apply: ["required"])): [Comment]!
+        @paginate(builder: "App\\GraphQL\\Queries\\GetComments")
+        @middleware(checks: ["auth:api"])
 }
