@@ -71,6 +71,19 @@ type Mutation {
         @middleware(checks: ["auth:api"])
         @broadcast(subscription: "privateMessageAdded")
 
+    addComment(
+        id: ID! @rules(apply: ["required"])
+        text: String! @rules(apply: ["required"])
+        post_id: ID! @rules(apply: ["required"])
+    ): Comment! @middleware(checks: ["auth:api"])
+
+    addReply(
+        id: ID! @rules(apply: ["required"])
+        text: String! @rules(apply: ["required"])
+        post_id: ID! @rules(apply: ["required"])
+        comment_id: ID! @rules(apply: ["required"])
+    ): Reply! @middleware(checks: ["auth:api"])
+
     setConfig(
         id: ID! @rules(apply: ["required", "exists:configs"])
         country_id: ID
