@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Events\TestEvent;
 use App\Notifications\UserFollowed;
 use App\User;
@@ -24,9 +25,10 @@ class TestController extends Controller
 
     public function web(Request $request)
     {
-        TestEvent::broadcast("hello");
-
-        return 'done';
+        Comment::create([
+            'text' => "hello",
+            'post_id' => "b72dc7c6-490c-474d-8a74-fb6bd5f37ac3"
+        ]);
     }
 
     public function env(Request $request)
@@ -36,8 +38,9 @@ class TestController extends Controller
 
     public function broadcast(Request $request)
     {
-        broadcast(new TestEvent('hello'));
-
-        return 'hello';
+        Comment::create([
+            'text' => "hello",
+            'post_id' => "b72dc7c6-490c-474d-8a74-fb6bd5f37ac3"
+        ]);
     }
 }

@@ -10,6 +10,13 @@ class AddReply
 {
     public function __invoke($rootValue, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
     {
-        return Reply::create($args);
+        $user = auth()->user();
+
+        return Comment::create([
+            'text' => $args['text'],
+            'user_id' => $user->id,
+            'post_id' => $args['post_id'],
+            'comment_id' => $args['comment_id'],
+        ]);
     }
 }
