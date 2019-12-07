@@ -10,6 +10,6 @@ class GetComments
 {
     public function __invoke($rootValue, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
     {
-        return Comment::with('replies')->where('id', $args['post_id']);
+        return Comment::with('replies')->where('post_id', $args['post_id']);
     }
 }

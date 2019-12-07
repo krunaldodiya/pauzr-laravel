@@ -71,13 +71,13 @@ type Mutation {
         @middleware(checks: ["auth:api"])
         @broadcast(subscription: "privateMessageAdded")
 
-    addComment(
+    addPostComment(
         id: ID! @rules(apply: ["required"])
         text: String! @rules(apply: ["required"])
         post_id: ID! @rules(apply: ["required"])
     ): Comment! @middleware(checks: ["auth:api"])
 
-    addReply(
+    addCommentReply(
         id: ID! @rules(apply: ["required"])
         text: String! @rules(apply: ["required"])
         post_id: ID! @rules(apply: ["required"])

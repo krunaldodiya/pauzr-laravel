@@ -60,6 +60,8 @@ type Quote {
 
 type Comment {
     id: ID!
+    user_id: ID!
+    post_id: ID!
     text: String!
     user: User!
     post: Post!
@@ -70,6 +72,9 @@ type Comment {
 
 type Reply {
     id: ID!
+    user_id: ID!
+    post_id: ID!
+    comment_id: ID!
     text: String!
     user: User!
     post: Post!

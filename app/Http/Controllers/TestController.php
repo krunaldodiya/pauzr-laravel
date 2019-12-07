@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
-use App\Events\TestEvent;
-use App\Notifications\UserFollowed;
 use App\User;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Notification;
 
 class TestController extends Controller
 {
@@ -25,13 +22,7 @@ class TestController extends Controller
 
     public function web(Request $request)
     {
-        $user = auth()->user();
-
-        Comment::create([
-            'text' => "hello",
-            'user_id' => $user->id,
-            'post_id' => "b72dc7c6-490c-474d-8a74-fb6bd5f37ac3"
-        ]);
+        return Comment::with('replies')->where('post_id', "b72dc7c6-490c-474d-8a74-fb6bd5f37ac3")->get();
     }
 
     public function env(Request $request)
