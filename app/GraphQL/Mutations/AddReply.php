@@ -13,6 +13,7 @@ class AddReply
         $user = auth()->user();
 
         return Comment::create([
+            'id' => $args['id'],
             'text' => $args['text'],
             'user_id' => $user->id,
             'post_id' => $args['post_id'],

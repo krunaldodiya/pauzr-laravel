@@ -25,8 +25,11 @@ class TestController extends Controller
 
     public function web(Request $request)
     {
+        $user = auth()->user();
+
         Comment::create([
             'text' => "hello",
+            'user_id' => $user->id,
             'post_id' => "b72dc7c6-490c-474d-8a74-fb6bd5f37ac3"
         ]);
     }
@@ -38,9 +41,6 @@ class TestController extends Controller
 
     public function broadcast(Request $request)
     {
-        Comment::create([
-            'text' => "hello",
-            'post_id' => "b72dc7c6-490c-474d-8a74-fb6bd5f37ac3"
-        ]);
+        return 'broadcasting';
     }
 }
