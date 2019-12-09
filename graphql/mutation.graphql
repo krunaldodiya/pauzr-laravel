@@ -39,6 +39,9 @@ type Mutation {
         attachments: [AttachmentInput!]!
     ): Post! @middleware(checks: ["auth:api"])
 
+    sharePost(post_id: ID! @rules(apply: ["required"])): Post!
+        @middleware(checks: ["auth:api"])
+
     toggleFollow(following_id: ID! @rules(apply: ["required"])): String!
         @middleware(checks: ["auth:api"])
 
