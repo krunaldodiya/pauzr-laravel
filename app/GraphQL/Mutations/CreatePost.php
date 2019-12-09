@@ -34,10 +34,13 @@ class CreatePost
             'user_id' => $user->id,
             'category_id' => $args['category_id'],
             'description' => isset($args['description']) ? $args['description'] : null,
-            'type' => $args['type'],
         ]);
 
         $post->attachments()->createMany($attachments);
+
+        $post->feed()->create([
+            'post_id' => $post->id, 'user_id' => $user->id
+        ]);
 
         return Post::with('owner', 'category', 'attachments')
             ->where('id', $post->id)

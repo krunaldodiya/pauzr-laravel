@@ -34,7 +34,6 @@ type Mutation {
     createPost(
         id: ID! @rules(apply: ["required"])
         category_id: ID! @rules(apply: ["required"])
-        type: String! @rules(apply: ["required"])
         description: String
         published: Boolean
         attachments: [AttachmentInput!]!

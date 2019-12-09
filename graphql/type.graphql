@@ -117,7 +117,6 @@ type Feed {
 type Post {
     id: ID!
     description: String
-    type: String!
     attachments: [Attachment!]! @morphMany
     comments: [Comment!]!
     owner: User! @belongsTo

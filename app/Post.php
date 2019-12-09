@@ -25,6 +25,11 @@ class Post extends Model
         return $this->created_at->diffForHumans();
     }
 
+    public function feed()
+    {
+        return $this->belongsTo(Feed::class);
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);
