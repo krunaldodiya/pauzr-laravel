@@ -15,8 +15,8 @@ type Query {
         @middleware(checks: ["auth:api"])
     group_chatroom(chatroom_id: ID! @rules(apply: ["required"])): Chatroom!
         @middleware(checks: ["auth:api"])
-    posts: [Post!]!
-        @paginate(builder: "App\\GraphQL\\Queries\\Posts")
+    feeds: [Feed!]!
+        @paginate(builder: "App\\GraphQL\\Queries\\Feeds")
         @middleware(checks: ["auth:api"])
     notifications: [Notification!]! @middleware(checks: ["auth:api"])
     getConfig(device_id: String! @rules(apply: ["required"])): Config!

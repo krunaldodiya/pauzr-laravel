@@ -20,7 +20,7 @@ class CreateFeedsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
 
             $table->uuid('post_id');
-            $table->foreign('post_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('post_id')->references('id')->on('posts')->onUpdate('cascade')->onDelete('cascade');
 
             $table->enum('type', ['Post', 'Share'])->default('Post');
 

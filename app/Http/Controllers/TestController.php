@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Feed;
 use App\User;
 
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class TestController extends Controller
 
     public function web(Request $request)
     {
-        return Comment::with('replies')->where('post_id', "b72dc7c6-490c-474d-8a74-fb6bd5f37ac3")->get();
+        return Feed::with('post')->get();
     }
 
     public function env(Request $request)

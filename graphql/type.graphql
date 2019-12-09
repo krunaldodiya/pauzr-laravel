@@ -105,6 +105,15 @@ type Category {
     background_color: String
 }
 
+type Feed {
+    id: ID!
+    user: User! @belongsTo
+    post: Post! @belongsTo
+    type: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
 type Post {
     id: ID!
     description: String
