@@ -114,6 +114,21 @@ type Feed {
     updated_at: DateTime!
 }
 
+type Group {
+    id: ID!
+    owner_id: ID!
+    owner: User! @belongsTo
+    subscribers: [User!]! @belongsToMany
+    name: String!
+    description: String!
+    photo: String!
+    status: Boolean!
+    anyone_can_post: Boolean!
+    anyone_can_join: Boolean!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
 type Post {
     id: ID!
     description: String
