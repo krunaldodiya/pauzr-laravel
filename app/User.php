@@ -81,12 +81,12 @@ class User extends Authenticatable implements JWTSubject
 
     public function chatrooms()
     {
-        return $this->belongsToMany(Chatroom::class, 'chatroom_subscribers');
+        return $this->belongsToMany(Chatroom::class, 'chatroom_subscribers')->withPivot('is_admin');;
     }
 
     public function groups()
     {
-        return $this->belongsToMany(Group::class, 'group_subscribers');
+        return $this->belongsToMany(Group::class, 'group_subscribers')->withPivot('is_admin');;
     }
 
     public function favorites()

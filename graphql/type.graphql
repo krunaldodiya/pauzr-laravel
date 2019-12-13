@@ -24,6 +24,11 @@ type Chatroom {
     chatroom_image: String!
     chats: [Chat!]! @hasMany
     subscribers: [User!]! @belongsToMany
+    pivot: ChatroomSubscription!
+}
+
+type ChatroomSubscription {
+    is_admin: Boolean!
 }
 
 type Chat {
@@ -119,6 +124,7 @@ type Group {
     owner_id: ID!
     owner: User! @belongsTo
     subscribers: [User!]! @belongsToMany
+    pivot: GroupSubscription!
     name: String!
     description: String!
     photo: String!
@@ -127,6 +133,10 @@ type Group {
     anyone_can_join: Boolean!
     created_at: DateTime!
     updated_at: DateTime!
+}
+
+type GroupSubscription {
+    is_admin: Boolean!
 }
 
 type Post {
