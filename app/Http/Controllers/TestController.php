@@ -23,7 +23,7 @@ class TestController extends Controller
 
     public function web(Request $request)
     {
-        return Feed::with('post')->get();
+        return auth()->user()->groups;
     }
 
     public function env(Request $request)

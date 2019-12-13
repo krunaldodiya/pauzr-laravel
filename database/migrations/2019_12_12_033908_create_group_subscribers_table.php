@@ -14,13 +14,14 @@ class CreateGroupSubscribersTable extends Migration
     public function up()
     {
         Schema::create('group_subscribers', function (Blueprint $table) {
+            $table->uuid('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->uuid('group_id');
             $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
 
-            $table->uuid('subscriber_id');
-            $table->foreign('subscriber_id')->references('id')->on('users')->onDelete('cascade');
-
             $table->boolean('is_admin')->default(false);
+            $table->timestamps();
         });
     }
 

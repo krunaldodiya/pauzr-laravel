@@ -8,6 +8,7 @@ type Query {
         @middleware(checks: ["auth:api"])
     categories: [Category!]! @all @middleware(checks: ["auth:api"])
     quotes: [Quote!]! @all @middleware(checks: ["auth:api"])
+    groups: [Group!]! @middleware(checks: ["auth:api"])
     languages: [Language!]! @all @middleware(checks: ["auth:api"])
     drafts: [Post!]! @middleware(checks: ["auth:api"])
     all_chatrooms: [Chatroom!]! @middleware(checks: ["auth:api"])
