@@ -63,7 +63,7 @@ type Mutation {
     addParticipantsToGroup(
         group_id: ID! @rules(apply: ["required", "exists:groups"])
         participant_ids: [ID!]! @rules(apply: ["required", "exists:groups"])
-    ): Group! @middleware(checks: ["auth:api"]) @delete
+    ): Group! @middleware(checks: ["auth:api"])
 
     removeParticipantsFromGroup(
         group_id: ID! @rules(apply: ["required", "exists:groups"])
