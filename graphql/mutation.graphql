@@ -56,6 +56,20 @@ type Mutation {
         description: String
     ): Group! @middleware(checks: ["auth:api"])
 
+    deleteGroup(id: ID! @rules(apply: ["required", "exists:groups"])): Group!
+        @middleware(checks: ["auth:api"])
+        @delete
+
+    addParticipantsToGroup(
+        group_id: ID! @rules(apply: ["required", "exists:groups"])
+        participant_ids: [ID!]! @rules(apply: ["required", "exists:groups"])
+    ): Group! @middleware(checks: ["auth:api"]) @delete
+
+    removeParticipantsFromGroup(
+        group_id: ID! @rules(apply: ["required", "exists:groups"])
+        participant_id: ID! @rules(apply: ["required", "exists:groups"])
+    ): Group! @middleware(checks: ["auth:api"])
+
     toggleFollow(following_id: ID! @rules(apply: ["required"])): String!
         @middleware(checks: ["auth:api"])
 
