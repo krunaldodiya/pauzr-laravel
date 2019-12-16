@@ -48,7 +48,13 @@ type Mutation {
         id: ID! @rules(apply: ["required"])
         name: ID! @rules(apply: ["required"])
         description: String
-    ): Post! @middleware(checks: ["auth:api"])
+    ): Group! @middleware(checks: ["auth:api"])
+
+    editGroup(
+        id: ID! @rules(apply: ["required", "exists:groups"])
+        name: ID!
+        description: String
+    ): Group! @middleware(checks: ["auth:api"])
 
     toggleFollow(following_id: ID! @rules(apply: ["required"])): String!
         @middleware(checks: ["auth:api"])

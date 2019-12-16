@@ -13,6 +13,7 @@ class CreateGroup
         $user = auth()->user();
 
         $group = Group::create([
+            'id' => $args['id'],
             'name' => $args['name'],
             'description' => $args['description'],
             'owner_id' => $user->id,
