@@ -28,6 +28,7 @@ class CreateGroupsTable extends Migration
             $table->boolean('anyone_can_join')->default(false);
 
             $table->enum('type', ['Fun', 'Focus'])->default('Focus');
+            $table->boolean('is_featured')->default(false);
 
             $table->timestamps();
         });

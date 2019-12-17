@@ -132,6 +132,7 @@ type Group {
     status: Boolean!
     anyone_can_post: Boolean!
     anyone_can_join: Boolean!
+    is_featured: Boolean!
     created_at: DateTime!
     updated_at: DateTime!
 }
