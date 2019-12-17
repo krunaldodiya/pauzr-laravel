@@ -24,15 +24,11 @@ class TestController extends Controller
 
     public function web(Request $request)
     {
-        $id = "cc70f08b-9744-4185-9289-9c71ce74bd62";
+        $id = "44a72c13-9f23-4481-bea7-71bbbd05d93a";
 
-        Group::where('id', $id)
-            ->update([
-                'name' => "hello",
-                'description' => "hello there",
-            ]);
+        $group = Group::where('id', $id)->first();
 
-        return Group::where('id', $id)->first();
+        $group->subscribers()->attach(['fb75dab8-e2ee-46e3-93e2-c81b3f8569a1']);
     }
 
     public function env(Request $request)

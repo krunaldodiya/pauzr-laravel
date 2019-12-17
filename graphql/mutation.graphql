@@ -61,13 +61,13 @@ type Mutation {
         @delete
 
     addParticipantsToGroup(
-        group_id: ID! @rules(apply: ["required", "exists:groups"])
-        participant_ids: [ID!]! @rules(apply: ["required", "exists:groups"])
+        group_id: ID! @rules(apply: ["required", "exists:groups,id"])
+        participant_ids: [ID!]! @rules(apply: ["required"])
     ): Group! @middleware(checks: ["auth:api"])
 
     removeParticipantsFromGroup(
-        group_id: ID! @rules(apply: ["required", "exists:groups"])
-        participant_id: ID! @rules(apply: ["required", "exists:groups"])
+        group_id: ID! @rules(apply: ["required", "exists:groups,id"])
+        participant_id: ID! @rules(apply: ["required"])
     ): Group! @middleware(checks: ["auth:api"])
 
     toggleFollow(following_id: ID! @rules(apply: ["required"])): String!

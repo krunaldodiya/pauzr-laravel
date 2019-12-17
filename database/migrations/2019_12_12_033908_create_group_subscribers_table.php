@@ -22,6 +22,8 @@ class CreateGroupSubscribersTable extends Migration
 
             $table->boolean('is_admin')->default(false);
             $table->timestamps();
+
+            $table->primary(['user_id', 'group_id']);
         });
     }
 
