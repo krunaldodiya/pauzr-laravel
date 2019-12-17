@@ -128,6 +128,7 @@ type Group {
     name: String!
     description: String!
     photo: String!
+    type: String!
     status: Boolean!
     anyone_can_post: Boolean!
     anyone_can_join: Boolean!
