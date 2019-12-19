@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
-use App\Feed;
-use App\Group;
 use App\User;
 
 use Illuminate\Http\Request;
@@ -24,11 +21,12 @@ class TestController extends Controller
 
     public function web(Request $request)
     {
-        $id = "44a72c13-9f23-4481-bea7-71bbbd05d93a";
+        $user = auth()->user();
 
-        $group = Group::where('id', $id)->first();
+        // $transaction = $user->createTransaction(100, 'deposit', ['description' => 'transaction description']);
+        // $user->deposit($transaction->transaction_id);
 
-        $group->subscribers()->attach(['fb75dab8-e2ee-46e3-93e2-c81b3f8569a1']);
+        return ['data' => $user->transactions];
     }
 
     public function env(Request $request)

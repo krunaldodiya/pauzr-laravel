@@ -4,15 +4,14 @@ namespace App;
 
 use App\Events\UserCreated;
 use App\Traits\HasUuid;
-use Bavix\Wallet\Interfaces\Wallet;
-use Bavix\Wallet\Traits\HasWallet;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\DB;
+use KD\Wallet\Traits\HasWallet;
 use Laravel\Scout\Searchable;
 
-class User extends Authenticatable implements JWTSubject, Wallet
+class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
     use HasUuid;
