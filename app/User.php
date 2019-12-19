@@ -4,17 +4,20 @@ namespace App;
 
 use App\Events\UserCreated;
 use App\Traits\HasUuid;
+use Bavix\Wallet\Interfaces\Wallet;
+use Bavix\Wallet\Traits\HasWallet;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\DB;
 use Laravel\Scout\Searchable;
 
-class User extends Authenticatable implements JWTSubject
+class User extends Authenticatable implements JWTSubject, Wallet
 {
     use Notifiable;
     use HasUuid;
     use Searchable;
+    use HasWallet;
 
     protected $fillable = [
         'fcm_token', 'name', 'email', 'email_verified_at', 'mobile', 'mobile_verified_at', 'username', 'password',
