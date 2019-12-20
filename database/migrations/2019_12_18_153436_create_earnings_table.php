@@ -13,17 +13,14 @@ class CreatePointsTable extends Migration
      */
     public function up()
     {
-        Schema::create('points', function (Blueprint $table) {
+        Schema::create('earnings', function (Blueprint $table) {
             $table->uuid('id')->primary();
 
             $table->uuid('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
-            $table->string('pointable_type');
-            $table->uuid('pointable_id');
-
-            $table->integer('points')->default(0);
-            $table->boolean('redeemed')->default(false);
+            $table->integer('redeemed_points');
+            $table->boolean('redeemed_status')->default(false);
 
             $table->timestamps();
         });
@@ -36,6 +33,6 @@ class CreatePointsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('points');
+        Schema::dropIfExists('earnings');
     }
 }
