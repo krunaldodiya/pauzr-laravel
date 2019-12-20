@@ -26,7 +26,13 @@ class TestController extends Controller
         // $transaction = $user->createTransaction(100, 'deposit', ['description' => 'transaction description']);
         // $user->deposit($transaction->transaction_id);
 
-        return ['data' => $user->transactions];
+        $data = $user
+            ->transactions()
+            ->where('meta->points->id', "123")
+            ->where('meta->points->type', "post_favorited")
+            ->get();
+
+        return ['data' => $data];
     }
 
     public function env(Request $request)

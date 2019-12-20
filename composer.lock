@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4b4455601e028cf829e5265edc612f5c",
+    "content-hash": "4ec85919d2d592adf718cf15ae52e41a",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -1573,17 +1573,25 @@
         },
         {
             "name": "krunaldodiya/wallet",
-            "version": "1.0.4",
+            "version": "1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kunaldodiya/wallet.git",
-                "reference": "2b1df6161f384b1e0a8a7120ccaacdf4b319043a"
+                "reference": "6a13a3781535d70d628186247da0a157a5f9469f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kunaldodiya/wallet/zipball/2b1df6161f384b1e0a8a7120ccaacdf4b319043a",
-                "reference": "2b1df6161f384b1e0a8a7120ccaacdf4b319043a",
+                "url": "https://api.github.com/repos/kunaldodiya/wallet/zipball/6a13a3781535d70d628186247da0a157a5f9469f",
+                "reference": "6a13a3781535d70d628186247da0a157a5f9469f",
                 "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.6|^5.7|^5.8|^6.0",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "3.8.*",
+                "phpunit/phpunit": "^7.0"
             },
             "type": "library",
             "extra": {
@@ -1598,7 +1606,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "KD\\Wallet\\": "src/"
+                    "KD\\Wallet\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1607,12 +1615,19 @@
             ],
             "authors": [
                 {
-                    "name": "krunaldodiya",
-                    "email": "kunal.dodiya1@gmail.com"
+                    "name": "kunal dodiya",
+                    "email": "kunal.dodiya1@gmail.com",
+                    "role": "Developer"
                 }
             ],
-            "description": "Laravel Wallet",
-            "time": "2019-12-19T06:42:52+00:00"
+            "description": "laravel wallet",
+            "homepage": "https://github.com/kunaldodiya/wallet",
+            "keywords": [
+                "kunaldodiya",
+                "laravel",
+                "wallet"
+            ],
+            "time": "2019-12-20T04:25:38+00:00"
         },
         {
             "name": "laravel/framework",

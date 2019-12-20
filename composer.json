@@ -19,7 +19,7 @@
         "barryvdh/laravel-cors": "^0.11.4",
         "beyondcode/laravel-websockets": "^1.3",
         "fideloper/proxy": "^4.0",
-        "krunaldodiya/wallet": "1.0.4",
+        "krunaldodiya/wallet": "1.0.9",
         "laravel/framework": "^6.2",
         "laravel/horizon": "^3.4",
         "laravel/nova": "~2.0",
