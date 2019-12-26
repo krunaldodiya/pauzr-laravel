@@ -46,6 +46,21 @@ type Country {
     shortname: String!
 }
 
+type Transaction {
+    id: ID!
+    amount: Int!
+    transaction_id: ID!
+    transaction_type: String!
+    status: Boolean!
+    meta: JSON
+}
+
+type Wallet {
+    id: ID!
+    balance: Int!
+    transactions: [Transaction] @hasMany
+}
+
 type Language {
     id: ID!
     name: String!
@@ -166,6 +181,7 @@ type User {
     avatar: String
     bio: String
     language: String
+    wallet: Wallet @hasOne
     country: Country @belongsTo
     followers: [User!]! @belongsToMany
     followings: [User!]! @belongsToMany
