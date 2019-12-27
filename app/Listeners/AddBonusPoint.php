@@ -30,8 +30,10 @@ class AddBonusPoint
         $points = config('points.user_registered');
 
         $transaction = $user->createTransaction($points['points'], 'deposit', [
-            'id' => $user->id,
-            'type' => $points['type']
+            'points' => [
+                'id' => $user->id,
+                'type' => $points['type']
+            ]
         ]);
 
         $user->deposit($transaction->transaction_id);
