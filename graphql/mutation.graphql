@@ -70,6 +70,9 @@ type Mutation {
         participant_id: ID! @rules(apply: ["required"])
     ): Group! @middleware(checks: ["auth:api"])
 
+    setTimer(duration: Int! @rules(apply: ["required"])): Timer!
+        @middleware(checks: ["auth:api"])
+
     toggleFollow(following_id: ID! @rules(apply: ["required"])): String!
         @middleware(checks: ["auth:api"])
 

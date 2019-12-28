@@ -1,3 +1,12 @@
+type Timer {
+    id: ID!
+    user: User! @belongsTo
+    country: Country! @belongsTo
+    duration: Int!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
 type Config {
     id: ID!
     device_id: String!
