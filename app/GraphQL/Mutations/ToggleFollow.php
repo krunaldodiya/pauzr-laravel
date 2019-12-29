@@ -19,6 +19,28 @@ class ToggleFollow
         $toggle = $user->followings()->toggle($following->id);
 
         if (count($toggle['attached'])) {
+            $points = config('points.user_followed');
+
+            $count = $user
+                ->transactions()
+                ->where('meta->points->following_id', $following->id)
+                ->where('meta->points->follower_id', $user->id)
+                ->where('meta->points->type', $points['type'])
+                ->count();
+
+            if ($count == 0) {
+                $transaction = $user->createTransaction($points['points'], 'deposit', [
+                    'points' => [
+                        'following_id' => $following->id,
+                        'follower_id' => $user->id,
+                        'type' => $points['type']
+                    ]
+                ]);
+
+                $user->deposit($transaction->transaction_id);
+            }
+
+
             Notification::send($following, new UserFollowed($following->toArray(), $user->toArray()));
 
             return 'attached';

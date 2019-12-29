@@ -42,6 +42,17 @@ class CreatePost
             'post_id' => $post->id, 'user_id' => $user->id, 'type' => "Post"
         ]);
 
+        $points = config('points.post_created');
+
+        $transaction = $user->createTransaction($points['points'], 'deposit', [
+            'points' => [
+                'id' => $post->id,
+                'type' => $points['type']
+            ]
+        ]);
+
+        $user->deposit($transaction->transaction_id);
+
         return Post::with('owner', 'category', 'attachments')
             ->where('id', $post->id)
             ->first();

@@ -28,4 +28,7 @@ type Query {
     getComments(post_id: ID! @rules(apply: ["required"])): [Comment]!
         @paginate(builder: "App\\GraphQL\\Queries\\GetComments")
         @middleware(checks: ["auth:api"])
+    getTimerRankings(period: String! @rules(apply: ["required"])): [User]!
+        @field(resolver: "App\\GraphQL\\Queries\\Timer@getTimerRankings")
+        @middleware(checks: ["auth:api"])
 }
