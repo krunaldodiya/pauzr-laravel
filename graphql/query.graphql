@@ -31,4 +31,5 @@ type Query {
     getTimerRankings(period: String! @rules(apply: ["required"])): [User]!
         @field(resolver: "App\\GraphQL\\Queries\\Timer@getTimerRankings")
         @middleware(checks: ["auth:api"])
+    getFollowSuggestions: [User]! @middleware(checks: ["auth:api"])
 }
