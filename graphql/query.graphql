@@ -32,4 +32,6 @@ type Query {
         @field(resolver: "App\\GraphQL\\Queries\\Timer@getTimerRankings")
         @middleware(checks: ["auth:api"])
     getFollowSuggestions: [User]! @middleware(checks: ["auth:api"])
+    getSavedTime: [Timer]! @middleware(checks: ["auth:api"])
+    getSavedPoints: [Transaction]! @middleware(checks: ["auth:api"])
 }
