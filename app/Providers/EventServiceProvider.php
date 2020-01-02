@@ -9,6 +9,7 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 use App\Events\UserCreated;
 use App\Listeners\GenerateUsername;
 use App\Listeners\AddBonusPoint;
+use App\Listeners\CheckInvitation;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -25,6 +26,7 @@ class EventServiceProvider extends ServiceProvider
         UserCreated::class => [
             GenerateUsername::class,
             AddBonusPoint::class,
+            CheckInvitation::class,
         ],
     ];
 

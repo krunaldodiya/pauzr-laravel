@@ -45,4 +45,9 @@ return [
         'type' => 'timer_30',
         'points' => 5
     ],
+
+    'invitation' => [
+        'type' => 'invitation',
+        'points' => 5
+    ],
 ];
