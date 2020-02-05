@@ -18,10 +18,11 @@ class Register
 
     public function __invoke($rootValue, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
     {
-        $args['username'] = User::generate_username($args['name']);
+        $args['email'] = "{$args['username']}@pauzr.com";
 
         if ($user = User::create($args)) {
-            $token = auth('api')->tokenById($user->id);
+            $token = auth()->attempt($args);
+            $user = auth()->user($token);
 
             return $this->userRepository->createToken($user, $token);
         }

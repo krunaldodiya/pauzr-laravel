@@ -18,9 +18,11 @@ class Login
 
     public function __invoke($rootValue, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
     {
+        $type = filter_var($args['username'], FILTER_VALIDATE_EMAIL) ? "email" : "username";
+
         try {
-            $token = auth('api')->attempt($args);
-            $user = auth('api')->user($token);
+            $token = auth()->attempt([$type => $args['username'], 'password' => $args['password']]);
+            $user = auth()->user($token);
 
             return $this->userRepository->createToken($user, $token);
         } catch (\Throwable $th) {

@@ -29,13 +29,10 @@ class OtpRepository implements OtpRepositoryInterface
         }
     }
 
-    public function requestOtp($user)
+    public function requestOtp($country, $mobile)
     {
         $app_name = config('app.name');
         $otp = mt_rand(1000, 9999);
-
-        $country = $user['country'];
-        $mobile = $user['mobile'];
 
         $message = "$otp is Your otp for phone verification for $app_name.";
         $url = $this->generateUrl("request_otp", $country, $mobile, $otp, $message);
@@ -51,10 +48,8 @@ class OtpRepository implements OtpRepositoryInterface
         throw new Error($body->message);
     }
 
-    public function verifyOtp($user, $otp)
+    public function verifyOtp($country, $mobile, $otp)
     {
-        $country = $user['country'];
-        $mobile = $user['mobile'];
 
         $url = $this->generateUrl("verify_otp", $country, $mobile, $otp, null);
         $client = new \GuzzleHttp\Client();
@@ -62,9 +57,7 @@ class OtpRepository implements OtpRepositoryInterface
         $body = json_decode($response->getBody());
 
         if ($body->type == "success") {
-            $token = auth('api')->tokenById($user->id);
-
-            return $this->userRepository->createToken($user, $token);
+            return true;
         }
 
         throw new Error($body->message);

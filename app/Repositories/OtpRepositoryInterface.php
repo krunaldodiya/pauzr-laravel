@@ -4,6 +4,6 @@ namespace App\Repositories;
 
 interface OtpRepositoryInterface
 {
-    public function requestOtp($user);
-    public function verifyOtp($user, $otp);
+    public function requestOtp($country, $mobile);
+    public function verifyOtp($country, $mobile, $otp);
 }
