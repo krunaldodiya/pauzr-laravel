@@ -4,21 +4,21 @@ type Mutation {
         password: String! @rules(apply: ["required", "min:8"])
     ): Auth!
 
-    prepareRegister(
-        name: String! @rules(apply: ["required", "min:5"])
-        country_id: ID! @rules(apply: ["required"])
-        mobile: String! @rules(apply: ["required", "numeric, "unique:users"])
-        username: String! @rules(apply: ["required", "email", "unique:users"])
-        password: String! @rules(apply: ["required", "min:8"])
-    ): Boolean!
-
     register(
         name: String! @rules(apply: ["required", "min:5"])
         country_id: ID! @rules(apply: ["required"])
-        mobile: String! @rules(apply: ["required", "numeric, "unique:users"])
+        mobile: String! @rules(apply: ["required", "numeric", "unique:users"])
         username: String! @rules(apply: ["required", "email", "unique:users"])
         password: String! @rules(apply: ["required", "min:8"])
     ): Auth!
+
+    prepareRegister(
+        name: String! @rules(apply: ["required", "min:5"])
+        country_id: ID! @rules(apply: ["required"])
+        mobile: String! @rules(apply: ["required", "numeric", "unique:users"])
+        username: String! @rules(apply: ["required", "email", "unique:users"])
+        password: String! @rules(apply: ["required", "min:8"])
+    ): Boolean!
 
     requestOtp(
         mobile: String! @rules(apply: ["required", "numeric", "exists:users"])
