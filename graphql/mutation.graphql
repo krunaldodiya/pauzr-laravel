@@ -22,10 +22,12 @@ type Mutation {
     ): Boolean!
 
     requestOtp(
+        country_id: ID! @rules(apply: ["required"])
         mobile: String! @rules(apply: ["required", "numeric", "exists:users"])
     ): String!
 
     verifyOtp(
+        country_id: ID! @rules(apply: ["required"])
         mobile: String! @rules(apply: ["required", "numeric", "exists:users"])
         otp: Int! @rules(apply: ["required", "numeric"])
     ): Boolean!
@@ -114,7 +116,7 @@ type Mutation {
 
     setConfig(
         id: ID! @rules(apply: ["required", "exists:configs"])
-        country_id: ID
+        country_id: ID! @rules(apply: ["required"])
         initial_screen: String
     ): Config!
 
