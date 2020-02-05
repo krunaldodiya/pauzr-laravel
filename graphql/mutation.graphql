@@ -1,6 +1,7 @@
 type Mutation {
     login(
-        email: String! @rules(apply: ["required", "email", "exists:users"])
+        username: String!
+            @rules(apply: ["required", "alpha_dash", "unique:users", "min:8"])
         password: String! @rules(apply: ["required", "min:8"])
     ): Auth!
 
@@ -8,7 +9,8 @@ type Mutation {
         name: String! @rules(apply: ["required", "min:5"])
         country_id: ID! @rules(apply: ["required"])
         mobile: String! @rules(apply: ["required", "numeric", "unique:users"])
-        username: String! @rules(apply: ["required", "email", "unique:users"])
+        username: String!
+            @rules(apply: ["required", "alpha_dash", "unique:users", "min:8"])
         password: String! @rules(apply: ["required", "min:8"])
     ): Auth!
 
@@ -16,7 +18,8 @@ type Mutation {
         name: String! @rules(apply: ["required", "min:5"])
         country_id: ID! @rules(apply: ["required"])
         mobile: String! @rules(apply: ["required", "numeric", "unique:users"])
-        username: String! @rules(apply: ["required", "email", "unique:users"])
+        username: String!
+            @rules(apply: ["required", "alpha_dash", "unique:users", "min:8"])
         password: String! @rules(apply: ["required", "min:8"])
     ): Boolean!
 
