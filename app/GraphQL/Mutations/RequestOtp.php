@@ -3,6 +3,7 @@
 namespace App\GraphQL\Mutations;
 
 use App\Country;
+use App\Exceptions\InvalidCredentials;
 use App\User;
 
 use App\Repositories\OtpRepositoryInterface;
@@ -26,7 +27,7 @@ class RequestOtp
             $exists = User::where(['country_id' => $country->id, 'mobile' => $args['mobile']])->first();
 
             if ($exists) {
-                return response(['error' => 'Account already exists'], 400);
+                throw new InvalidCredentials("Request OTP Failed", "Account already exists");
             }
 
             return $this->otpRepository->requestOtp($country, $args['mobile']);
