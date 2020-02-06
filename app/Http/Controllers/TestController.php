@@ -26,7 +26,7 @@ class TestController extends Controller
 
         $token = JWTAuth::fromUser($user);
 
-        return $user;
+        return $token;
     }
 
     public function env(Request $request)
