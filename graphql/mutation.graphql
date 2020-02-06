@@ -1,7 +1,6 @@
 type Mutation {
     login(
-        username: String!
-            @rules(apply: ["required", "alpha_dash", "unique:users", "min:8"])
+        username: String! @rules(apply: ["required", "unique:users", "min:8"])
         password: String! @rules(apply: ["required", "min:8"])
     ): Auth!
 
