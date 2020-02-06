@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 
 use Illuminate\Http\Request;
+use Tymon\JWTAuth\JWTAuth;
 
 class TestController extends Controller
 {
@@ -21,18 +22,11 @@ class TestController extends Controller
 
     public function web(Request $request)
     {
-        $user = auth()->user();
+        $user = User::first();
 
-        // $transaction = $user->createTransaction(100, 'deposit', ['description' => 'transaction description']);
-        // $user->deposit($transaction->transaction_id);
+        $token = JWTAuth::fromUser($user);
 
-        $data = $user
-            ->transactions()
-            ->where('meta->points->id', "123")
-            ->where('meta->points->type', "post_favorited")
-            ->get();
-
-        return ['data' => $data];
+        return $user;
     }
 
     public function env(Request $request)
