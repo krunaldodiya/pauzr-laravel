@@ -23,7 +23,7 @@ class RequestOtp
         $country = Country::find($args['country_id']);
 
         if ($args['type'] === 'register') {
-            $exists = User::where(['mobile' => $args['mobile']])->first();
+            $exists = User::where(['country_id' => $country->id, 'mobile' => $args['mobile']])->first();
 
             if ($exists) {
                 return response(['error' => 'Account already exists'], 400);
