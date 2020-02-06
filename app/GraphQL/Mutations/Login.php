@@ -6,6 +6,7 @@ use App\Exceptions\InvalidCredentials;
 use App\Repositories\UserRepositoryInterface;
 use GraphQL\Type\Definition\ResolveInfo;
 use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
+use Tymon\JWTAuth\JWTAuth;
 
 class Login
 {
@@ -22,7 +23,7 @@ class Login
 
         try {
             $token = auth()->attempt([$type => $args['username'], 'password' => $args['password']]);
-            $user = auth()->user($token);
+            $user = JWTAuth::toUser($token);
 
             return $this->userRepository->createToken($user, $token);
         } catch (\Throwable $th) {

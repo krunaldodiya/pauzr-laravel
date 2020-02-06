@@ -6,6 +6,7 @@ use App\Repositories\UserRepositoryInterface;
 use App\User;
 use GraphQL\Type\Definition\ResolveInfo;
 use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
+use Tymon\JWTAuth\JWTAuth;
 
 class Register
 {
@@ -21,9 +22,7 @@ class Register
         $args['email'] = "{$args['username']}@pauzr.com";
 
         if ($user = User::create($args)) {
-            $token = auth()->attempt($args);
-            $user = auth()->user($token);
-
+            $token = JWTAuth::fromUser($user);
             return $this->userRepository->createToken($user, $token);
         }
     }
