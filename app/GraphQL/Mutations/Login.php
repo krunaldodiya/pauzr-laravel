@@ -2,9 +2,10 @@
 
 namespace App\GraphQL\Mutations;
 
+use App\User;
+
 use App\Exceptions\InvalidCredentials;
 use App\Repositories\UserRepositoryInterface;
-use App\User;
 use GraphQL\Type\Definition\ResolveInfo;
 use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
 use Tymon\JWTAuth\Facades\JWTAuth;
