@@ -24,7 +24,6 @@ class EventServiceProvider extends ServiceProvider
         ],
 
         UserCreated::class => [
-            GenerateUsername::class,
             AddBonusPoint::class,
             CheckInvitation::class,
         ],
