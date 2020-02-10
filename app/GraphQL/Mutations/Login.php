@@ -32,8 +32,7 @@ class Login
                 return $this->userRepository->createToken($user, $token);
             }
 
-            return response(['validation' => ['username' => ['Invalid Credentials']]], 402);
-            // throw new InvalidCredentials("Login Failed", "Invalid Credentials");
+            throw new InvalidCredentials("Login Failed", "Invalid Credentials");
         } catch (\Throwable $th) {
             throw new InvalidCredentials("Login Failed", "Invalid Credentials");
         }
