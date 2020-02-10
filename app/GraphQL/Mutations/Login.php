@@ -31,6 +31,6 @@ class Login
             return $this->userRepository->createToken($user, $token);
         }
 
-        throw new ValidationFailed("Login Failed", [['username' => "Invalid Credentials"]]);
+        throw new ValidationFailed("Login Failed", ['username' => ["Invalid Credentials"]]);
     }
 }

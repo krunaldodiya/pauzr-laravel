@@ -27,7 +27,7 @@ class RequestOtp
             $exists = User::where(['country_id' => $country->id, 'mobile' => $args['mobile']])->first();
 
             if ($exists) {
-                throw new ValidationFailed("Request OTP Failed", [['mobile' => "Account already exists"]]);
+                throw new ValidationFailed("Request OTP Failed", ['mobile' => ["Account already exists"]]);
             }
         }
 
