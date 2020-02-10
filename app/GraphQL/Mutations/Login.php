@@ -24,17 +24,13 @@ class Login
         $type = filter_var($args['username'], FILTER_VALIDATE_EMAIL) ? "email" : "username";
         $credentials = [$type => $args['username'], 'password' => $args['password']];
 
-        try {
-            if (auth()->attempt($credentials)) {
-                $user =   User::where([$type => $args['username']])->first();
-                $token = JWTAuth::fromUser($user);
+        if (auth()->attempt($credentials)) {
+            $user =   User::where([$type => $args['username']])->first();
+            $token = JWTAuth::fromUser($user);
 
-                return $this->userRepository->createToken($user, $token);
-            }
-
-            throw new ValidationFailed("Login Failed", ['username' => "Invalid Credentials"]);
-        } catch (\Throwable $th) {
-            throw new ValidationFailed("Login Failed", ['username' => "Invalid Credentials"]);
+            return $this->userRepository->createToken($user, $token);
         }
+
+        throw new ValidationFailed("Login Failed", [['username' => "Invalid Credentials"]]);
     }
 }
