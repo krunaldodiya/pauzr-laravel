@@ -5,11 +5,11 @@ namespace App\Exceptions;
 use Exception;
 use Nuwave\Lighthouse\Exceptions\RendersErrorsExtensions;
 
-class InvalidCredentials extends Exception implements RendersErrorsExtensions
+class ValidationFailed extends Exception implements RendersErrorsExtensions
 {
     private $validation;
 
-    public function __construct(string $message, string $validation)
+    public function __construct(string $message, array $validation)
     {
         parent::__construct($message);
 

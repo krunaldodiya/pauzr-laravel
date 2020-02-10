@@ -4,7 +4,7 @@ namespace App\GraphQL\Mutations;
 
 use App\User;
 
-use App\Exceptions\InvalidCredentials;
+use App\Exceptions\ValidationFailed;
 use App\Repositories\UserRepositoryInterface;
 use GraphQL\Type\Definition\ResolveInfo;
 use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
@@ -32,9 +32,9 @@ class Login
                 return $this->userRepository->createToken($user, $token);
             }
 
-            throw new InvalidCredentials("Login Failed", ['username' => "Invalid Credentials"]);
+            throw new ValidationFailed("Login Failed", ['username' => "Invalid Credentials"]);
         } catch (\Throwable $th) {
-            throw new InvalidCredentials("Login Failed", ['username' => "Invalid Credentials"]);
+            throw new ValidationFailed("Login Failed", ['username' => "Invalid Credentials"]);
         }
     }
 }
