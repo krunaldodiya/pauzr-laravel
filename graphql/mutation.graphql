@@ -32,6 +32,12 @@ type Mutation {
         otp: Int! @rules(apply: ["required", "numeric"])
     ): Boolean!
 
+    resetPassword(
+        country_id: ID! @rules(apply: ["required"])
+        mobile: String! @rules(apply: ["required", "numeric"])
+        password: String! @rules(apply: ["required", "min:8"])
+    ): Boolean!
+
     editProfile(
         name: String @rules(apply: ["min:5"])
         username: String @rules(apply: ["unique:users"])
