@@ -29,8 +29,6 @@ class RequestOtp
             if ($exists) {
                 throw new InvalidCredentials("Request OTP Failed", "Account already exists");
             }
-
-            return $this->otpRepository->requestOtp($country, $args['mobile']);
         }
 
         return $this->otpRepository->requestOtp($country, $args['mobile']);
