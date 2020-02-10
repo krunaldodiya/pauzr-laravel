@@ -20,6 +20,8 @@ class Register
     public function __invoke($rootValue, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
     {
         $user = User::create([
+            'mobile' => $args['mobile'],
+            'country_id' => $args['country_id'],
             'name' => $args['name'],
             'username' => $args['username'],
             'email' => "{$args['username']}@pauzr.com",
