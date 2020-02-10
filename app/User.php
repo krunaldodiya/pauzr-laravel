@@ -66,11 +66,6 @@ class User extends Authenticatable implements JWTSubject
         return $avatar == null ? "https://huntpng.com/images250/default-avatar-png-11.png" : $avatar;
     }
 
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = bcrypt($value);
-    }
-
     public function getJWTIdentifier()
     {
         return $this->getKey();

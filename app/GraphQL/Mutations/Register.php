@@ -19,9 +19,14 @@ class Register
 
     public function __invoke($rootValue, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
     {
-        $args['email'] = "{$args['username']}@pauzr.com";
+        $user = User::create([
+            'name' => $args['name'],
+            'username' => $args['username'],
+            'email' => "{$args['username']}@pauzr.com",
+            'password' => bcrypt($args['password']),
+        ]);
 
-        if ($user = User::create($args)) {
+        if ($user) {
             $token = JWTAuth::fromUser($user);
             return $this->userRepository->createToken($user, $token);
         }
